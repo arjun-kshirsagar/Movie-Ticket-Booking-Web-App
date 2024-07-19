@@ -65,14 +65,17 @@ const BookShow = () => {
                   <li key={seatNumber}>
                     <button
                       onClick={() => {
-                        if (selectedSeats.includes(seatNumber)) {
-                          setSelectedSeats(
-                            selectedSeats.filter(
-                              (curSeatNumber) => curSeatNumber !== seatNumber
-                            )
-                          );
-                        } else {
-                          setSelectedSeats([...selectedSeats, seatNumber]);
+                        if (!show.bookedSeats.includes(seatNumber)) { // Check if the seat is not booked
+                          // if the seat is already booked then rerendering will not be done and the seat will not be selected
+                          if (selectedSeats.includes(seatNumber)) {
+                            setSelectedSeats(
+                              selectedSeats.filter(
+                                (curSeatNumber) => curSeatNumber !== seatNumber
+                              )
+                            );
+                          } else {
+                            setSelectedSeats([...selectedSeats, seatNumber]);
+                          }
                         }
                       }}
                       className={seatClass}
