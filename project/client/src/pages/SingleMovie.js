@@ -93,6 +93,7 @@ const SingleMovie = () => {
                   type="date"
                   className="max-width-300 mt-8px-mob"
                   value={date}
+                  min={moment().format("YYYY-MM-DD")} // To disables the past dates
                   placeholder="default size"
                   prefix={<CalendarOutlined />}
                 />
